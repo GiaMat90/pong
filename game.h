@@ -2,6 +2,7 @@
 
 #include "window.h"
 #include "renderer.h"
+#include "input.h"
 #include <types.h>
 
 class game : public tsg::non_copyable
@@ -25,10 +26,13 @@ protected: // virtual methods
 protected:
 	void create_window(std::string title, window::width_t w, window::height_t h);
 	void create_renderer();
+	void create_keyboard_input();
+	void quit();
 protected: // attributes
 	GAME_STATE m_state{ GAME_STATE::NONE };
-	window* m_window{nullptr};
-	renderer* m_renderer{nullptr};
+	window* m_window{ nullptr };
+	renderer* m_renderer{ nullptr };
+	input* m_input{ nullptr };
 
 };
 

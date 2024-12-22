@@ -17,4 +17,7 @@ sdl_window::sdl_window(const std::string& t, const width_t w, const height_t h) 
 	}
 }
 
+sdl_window::~sdl_window() {
+	SDL_DestroyWindow(m_sdl_window);	
+}
 

@@ -23,6 +23,7 @@ public:
 	};
 	window(std::string title, width_t w, height_t h) :
 		m_title(title), m_width(w), m_height(h) {}
+	virtual ~window() = default;	
 protected:
 	std::string m_title;
 	unsigned m_width;

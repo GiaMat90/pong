@@ -106,7 +106,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;USE_SDL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Workspace\GiaMat90\pong\Project1\sdl_engine;C:\Workspace\GiaMat90\pong\Project1\engine;C:\Workspace\SDL_ttf\include\SDL3_ttf;C:\tsg;C:\Workspace\SDL\include;C:\Workspace\SDL\include\SDL3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Workspace\GiaMat90\pong\Project1\pong;C:\Workspace\GiaMat90\pong\Project1\sdl_engine;C:\Workspace\GiaMat90\pong\Project1\engine;C:\Workspace\SDL_ttf\include\SDL3_ttf;C:\tsg;C:\Workspace\SDL\include;C:\Workspace\SDL\include\SDL3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,8 +133,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="engine\game.cpp" />
-    <ClCompile Include="pong.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pong\ball.cpp" />
+    <ClCompile Include="pong\field.cpp" />
+    <ClCompile Include="pong\paddle.cpp" />
+    <ClCompile Include="pong\pong.cpp" />
     <ClCompile Include="sdl_engine\sdl_font.cpp" />
     <ClCompile Include="sdl_engine\sdl_game.cpp" />
     <ClCompile Include="sdl_engine\sdl_game_timer.cpp" />
@@ -144,7 +147,7 @@
     <ClCompile Include="sdl_engine\sdl_window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="actor.h" />
+    <ClInclude Include="engine\game_object.h" />
     <ClInclude Include="engine\color.h" />
     <ClInclude Include="engine\font.h" />
     <ClInclude Include="engine\game.h" />
@@ -155,14 +158,18 @@
     <ClInclude Include="engine\texture.h" />
     <ClInclude Include="engine\window.h" />
     <ClInclude Include="game_timer.h" />
+    <ClInclude Include="pong\ball.h" />
+    <ClInclude Include="pong\field.h" />
+    <ClInclude Include="pong\paddle.h" />
+    <ClInclude Include="pong\pong.h" />
     <ClInclude Include="sdl_engine\sdl_adaptor.h" />
     <ClInclude Include="sdl_engine\sdl_converter.h" />
     <ClInclude Include="sdl_engine\sdl_font.h" />
+    <ClInclude Include="sdl_engine\sdl_game_timer.h" />
     <ClInclude Include="sdl_engine\sdl_keyboard_input.h" />
     <ClInclude Include="sdl_engine\sdl_renderer.h" />
     <ClInclude Include="sdl_engine\sdl_texture.h" />
     <ClInclude Include="sdl_engine\sdl_window.h" />
-    <ClInclude Include="sdl_game_timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

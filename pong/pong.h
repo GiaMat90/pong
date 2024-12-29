@@ -28,5 +28,7 @@ private:
 	const std::chrono::milliseconds m_spf{ 1000u / 60u };  // millisecond per frame if fsp is 60
 	unsigned m_bounces{}; // score for single player
 	font* m_score{ nullptr };
+private:
+
 };
 

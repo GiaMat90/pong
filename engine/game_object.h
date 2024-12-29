@@ -16,15 +16,19 @@ public:
 	virtual void update(const float delta_time) = 0;
 };
 
-class static_object : public updateable {
+class static_object : public drawable {
 public:
 	static_object() = default;
 	~static_object() = default;
 };
 
-
 class dynamic_object : public updateable, public drawable {
 public:
 	dynamic_object() = default;
 	~dynamic_object() = default;
+};
+
+class trigger_object : public updateable {
+	trigger_object() = default;
+	~trigger_object() = default;
 };

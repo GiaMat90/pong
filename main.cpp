@@ -1,4 +1,4 @@
-#include "pong.h"
+#include <pong.h>
 #include <io/io.h>
 
 int main() {

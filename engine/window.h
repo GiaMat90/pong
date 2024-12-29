@@ -9,9 +9,6 @@ public:
 	class window_exception : public std::exception {
 		const char* waht() { return "window exception"; }
 	};
-	class initialize_exception : public window_exception {
-		const char* what() { return "initialization exception"; }
-	};
 	class create_exception : public window_exception {
 		const char* what() { return "create exception"; }
 	};

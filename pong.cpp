@@ -12,13 +12,33 @@ using geometry::AXES;
 constexpr int thickness = 15;
 constexpr float paddleH = 100.0f;
 
-bool pong::initialize() { 
-	create_window("pong.exe", 1024, 768);
-	create_renderer();
-	create_keyboard_input();
-	m_state = GAME_STATE::RUNNING;
-	return true; 
+pong::pong() : game() {
+}
+
+bool pong::initialize() {
+	bool res{ false };
+	if (initialize_externals()) {
+		create_window("pong.exe", 1024, 768);
+		create_renderer();
+		create_keyboard_input();
+		create_timer(60u);
+		initialize_actors();
+		m_state = GAME_STATE::RUNNING;
+		res = true; 
+	}
+	else {
+		tsg::print("Error initializing externals");
+	}
+	return res;
 };
+
+void pong::initialize_actors() {
+	m_score = font::create_font();
+	m_score->load_font("C:\\Workspace\\GiaMat90\\pong\\Project1\\Font\\Carlito-Regular.ttf", 30u);
+	m_score->set_where(font::text_position(800, 50));
+	m_score->set_color(color(255, 255, 255, 255));
+	m_score->set_text("BOUNCES: 0");
+}
 
 void pong::run_game() {
 	while (GAME_STATE::RUNNING == m_state) {
@@ -67,10 +87,7 @@ void pong::process_input() {
 
 void pong::update_game() 
 {
-	// Wait until 16ms has elapsed since last frame
-	std::this_thread::sleep_for(m_spf);
-	auto delta_time = static_cast<float>(m_spf.count()) / 1000.0f; // 0.016 seconds elapsed game-time
-
+	const float delta_time = m_timer->tick();
 	// Update paddle position based on direction
 	if (m_paddle_dir != 0)
 	{
@@ -105,7 +122,6 @@ void pong::update_game()
 		else {
 			--m_ball_vel[AXES::Y];
 		}
-		tsg::print("ball_vel[x,y] = [{},{}]", m_ball_vel[AXES::X], m_ball_vel[AXES::Y]);
 	};
 	// Did we intersect with the paddle?
 	float diff = m_paddle_pos.get_y() - m_ball_pos.get_y();
@@ -120,6 +136,7 @@ void pong::update_game()
 		m_ball_vel.get_x() < 0.0f)
 	{
 		m_ball_vel[AXES::X] *= -1.0f;
+		++m_bounces;
 		increase_ball_vel();
 	}
 	// Did the ball go off the screen? (if so, end game)
@@ -150,28 +167,28 @@ void pong::update_game()
 
 void pong::generate_output() {
 	// Set draw color to blue
-	m_renderer->set_draw_color(renderer::color(0u, 0u, 255u, 255u));
+	m_renderer->set_draw_color(color(0u, 0u, 255u, 255u));
 
 	// Clear back buffer
 	m_renderer->clear();
 
 	// Draw walls
-	m_renderer->set_draw_color(renderer::color(255u, 255u, 255u, 255u));
+	m_renderer->set_draw_color(color(255u, 255u, 255u, 255u));
 
 	// Draw top wall
 	rectangle wall(0, 0, 1024, thickness);
-	m_renderer->draw_rectangle(wall);
+	m_renderer->draw(wall);
 
 	// Draw bottom wall
 	wall.set_y(768 - thickness);
-	m_renderer->draw_rectangle(wall);
+	m_renderer->draw(wall);
 
 	// Draw right wall
 	wall.set_x(1024 - thickness);
 	wall.set_y(0);
 	wall.set_w(thickness);
 	wall.set_h(1024);
-	m_renderer->draw_rectangle(wall);
+	m_renderer->draw(wall);
 
 	// Draw paddle
 	rectangle paddle{
@@ -180,7 +197,7 @@ void pong::generate_output() {
 		thickness,
 		static_cast<unsigned>(paddleH)
 	};
-	m_renderer->draw_rectangle(paddle);
+	m_renderer->draw(paddle);
 
 	// Draw ball
 	rectangle ball{
@@ -189,7 +206,11 @@ void pong::generate_output() {
 		thickness,
 		thickness
 	};
-	m_renderer->draw_rectangle(ball);
+	m_renderer->draw(ball);
+
+	m_score->set_text("BOUNCES: " + std::to_string(m_bounces));
+	m_renderer->draw(m_score);
+	
 
 	// Swap front buffer and back buffer
 	m_renderer->render();

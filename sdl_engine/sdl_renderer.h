@@ -1,10 +1,11 @@
 #pragma once
 
 #include "renderer.h"
+#include "sdl_adaptor.h"
 #include <SDL_render.h>
 #include "sdl_window.h"
 
-class sdl_renderer : public renderer
+class sdl_renderer : public renderer, public sdl_adaptor<SDL_Renderer>
 {
 public:
 	sdl_renderer(sdl_window * w);
@@ -13,9 +14,7 @@ public: // overrided methods
 	void render() override;
 	void clear() override;
 	void set_draw_color(const color&) override;
-	void draw_rectangle(geometry::rectangle&) override;
-	//shape* create_shape(const SHAPE_TYPE&) override;
-protected:
-	SDL_Renderer* m_sdl_renderer;
+	void draw(geometry::rectangle&) override;
+	void draw(font*) override;
 };
 

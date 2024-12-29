@@ -106,13 +106,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;USE_SDL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\tsg;C:\Workspace\SDL\include;C:\Workspace\SDL\include\SDL3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Workspace\GiaMat90\pong\Project1\sdl_engine;C:\Workspace\GiaMat90\pong\Project1\engine;C:\Workspace\SDL_ttf\include\SDL3_ttf;C:\tsg;C:\Workspace\SDL\include;C:\Workspace\SDL\include\SDL3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Workspace\SDL\cmakebuild\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL3.lib;SDL_uclibc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Workspace\SDL\cmakebuild\Debug;C:\Workspace\SDL_ttf\cmakebuild\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL3.lib;SDL_uclibc.lib;SDL3_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -132,24 +132,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="game.cpp" />
+    <ClCompile Include="engine\game.cpp" />
     <ClCompile Include="pong.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="sdl_keyboard_input.cpp" />
-    <ClCompile Include="sdl_renderer.cpp" />
-    <ClCompile Include="sdl_window.cpp" />
+    <ClCompile Include="sdl_engine\sdl_font.cpp" />
+    <ClCompile Include="sdl_engine\sdl_game.cpp" />
+    <ClCompile Include="sdl_engine\sdl_game_timer.cpp" />
+    <ClCompile Include="sdl_engine\sdl_keyboard_input.cpp" />
+    <ClCompile Include="sdl_engine\sdl_renderer.cpp" />
+    <ClCompile Include="sdl_engine\sdl_texture.cpp" />
+    <ClCompile Include="sdl_engine\sdl_window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game.h" />
-    <ClInclude Include="geometry.h" />
-    <ClInclude Include="input.h" />
-    <ClInclude Include="keyboard_input.h" />
-    <ClInclude Include="pong.h" />
-    <ClInclude Include="renderer.h" />
-    <ClInclude Include="sdl_keyboard_input.h" />
-    <ClInclude Include="sdl_renderer.h" />
-    <ClInclude Include="sdl_window.h" />
-    <ClInclude Include="window.h" />
+    <ClInclude Include="actor.h" />
+    <ClInclude Include="engine\color.h" />
+    <ClInclude Include="engine\font.h" />
+    <ClInclude Include="engine\game.h" />
+    <ClInclude Include="engine\geometry.h" />
+    <ClInclude Include="engine\input.h" />
+    <ClInclude Include="engine\keyboard_input.h" />
+    <ClInclude Include="engine\renderer.h" />
+    <ClInclude Include="engine\texture.h" />
+    <ClInclude Include="engine\window.h" />
+    <ClInclude Include="game_timer.h" />
+    <ClInclude Include="sdl_engine\sdl_adaptor.h" />
+    <ClInclude Include="sdl_engine\sdl_converter.h" />
+    <ClInclude Include="sdl_engine\sdl_font.h" />
+    <ClInclude Include="sdl_engine\sdl_keyboard_input.h" />
+    <ClInclude Include="sdl_engine\sdl_renderer.h" />
+    <ClInclude Include="sdl_engine\sdl_texture.h" />
+    <ClInclude Include="sdl_engine\sdl_window.h" />
+    <ClInclude Include="sdl_game_timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

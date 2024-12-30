@@ -6,6 +6,9 @@
 #include "sdl_renderer.h"
 #include "sdl_keyboard_input.h"
 #include "sdl_game_timer.h"
+#include "sdl_converter.h"
+#include "sdl_texture.h"
+#include "io/io.h"
 
 #include <SDL_ttf.h>
 
@@ -36,6 +39,36 @@ void game::create_keyboard_input() {
 
 void game::create_timer(const unsigned fps) {
 	m_timer = new sdl_game_timer(fps);
+}
+
+texture* game::create_texture(const std::string& p) {
+	SDL_Surface* tmp_surf = IMG_Load(p.c_str());
+	auto tmp_renderer = dynamic_cast<sdl_renderer*>(m_renderer);
+	if (tmp_surf && tmp_renderer) {
+		auto tmp_texture = SDL_CreateTextureFromSurface(tmp_renderer->get_sdl_component(), tmp_surf);
+		SDL_DestroySurface(tmp_surf);
+		auto ret = new sdl_texture(tmp_texture);
+		return ret;
+	}
+	else {
+		tsg::print("creating texture error");
+		return nullptr;
+	}
+}
+
+texture* game::create_texture(surface* s) {
+	auto tmp_surf = sdl_converter::convert(*s);
+	auto tmp_renderer = dynamic_cast<sdl_renderer*>(m_renderer);
+	if (tmp_surf && tmp_renderer) {
+		auto tmp_texture = SDL_CreateTextureFromSurface(tmp_renderer->get_sdl_component(), tmp_surf);
+		SDL_DestroySurface(tmp_surf);
+		auto ret = new sdl_texture(tmp_texture);
+		return ret;
+	}
+	else {
+		tsg::print("creating texture error");
+		return nullptr;
+	}
 }
 
 void game::quit() {

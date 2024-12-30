@@ -106,7 +106,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;USE_SDL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Workspace\GiaMat90\pong\Project1\pong;C:\Workspace\GiaMat90\pong\Project1\sdl_engine;C:\Workspace\GiaMat90\pong\Project1\engine;C:\Workspace\SDL_ttf\include\SDL3_ttf;C:\tsg;C:\Workspace\SDL\include;C:\Workspace\SDL\include\SDL3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Workspace\GiaMat90\pong\Project1\pong;C:\Workspace\GiaMat90\pong\Project1\sdl_engine;C:\Workspace\GiaMat90\pong\Project1\engine;C:\Workspace\SDL_ttf\include\SDL3_image;C:\Workspace\SDL_ttf\include\SDL3_ttf;C:\Workspace\SDL\include\SDL3;C:\Workspace\SDL\include;C:\tsg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,6 +147,7 @@
     <ClCompile Include="sdl_engine\sdl_window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="engine\asset.h" />
     <ClInclude Include="engine\game_object.h" />
     <ClInclude Include="engine\color.h" />
     <ClInclude Include="engine\font.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="sdl_engine\sdl_renderer.h" />
     <ClInclude Include="sdl_engine\sdl_texture.h" />
     <ClInclude Include="sdl_engine\sdl_window.h" />
+    <ClInclude Include="sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

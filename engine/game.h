@@ -4,6 +4,7 @@
 #include "renderer.h"
 #include "input.h"
 #include "game_timer.h"
+#include "texture.h"
 #include <types.h>
 
 class game : public tsg::non_copyable
@@ -30,6 +31,8 @@ protected:
 	void create_renderer();
 	void create_keyboard_input();
 	void create_timer(const unsigned fps);
+	texture* create_texture(const std::string&);
+	texture* create_texture(surface*);
 	bool initialize_externals();
 	void quit();
 protected: // attributes

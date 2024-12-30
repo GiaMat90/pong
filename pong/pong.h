@@ -1,9 +1,9 @@
 #pragma once
 
 #include <game.h>
-#include "geometry.h"
-#include "font.h"
-#include <chrono>
+#include <geometry.h>
+#include <font.h>
+#include "field.h"
 
 class pong: public game
 {
@@ -25,10 +25,10 @@ private:
 	pong_vector m_ball_pos{1024.0f / 2.0f, 768.0f / 2.0f };
 	pong_vector m_ball_vel{-300.0f, 350.0f};
 	int m_paddle_dir{};
-	const std::chrono::milliseconds m_spf{ 1000u / 60u };  // millisecond per frame if fsp is 60
 	unsigned m_bounces{}; // score for single player
 	font* m_score{ nullptr };
 private:
+	field m_field;
 
 };
 

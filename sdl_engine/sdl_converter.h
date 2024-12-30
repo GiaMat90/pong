@@ -14,12 +14,18 @@ public:
 		geometry::rectangle ret(r.x, r.y, r.w, r.h);
 		return ret;
 	}
-	static inline SDL_Surface convert(const surface& s) {
+	static inline SDL_Surface* convert(const surface& s) {
+		/*
 		SDL_Surface ret{ 
 			.w = static_cast<uint8_t>(s[geometry::MEASURE::WIDTH]),
 			.h = static_cast<uint8_t>(s[geometry::MEASURE::HEIGHT])
 		};
 		return ret;
+		*/
+		return SDL_CreateSurface(
+			static_cast<uint8_t>(s[geometry::MEASURE::WIDTH]),
+			static_cast<uint8_t>(s[geometry::MEASURE::HEIGHT]),
+			SDL_PIXELFORMAT_UNKNOWN);
 	}
 	static inline SDL_Color convert(const color& c) {
 		SDL_Color ret {

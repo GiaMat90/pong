@@ -33,6 +33,11 @@ bool pong::initialize() {
 };
 
 void pong::initialize_actors() {
+	// field
+	m_field.set_renderer(m_renderer);
+	// creating game-objects
+	m_field.set_texture(create_texture("C:\\Workspace\\GiaMat90\\pong\\Project1\\Assets\\paddle-court_dark_green.png"));
+	// score counter
 	m_score = font::create_font();
 	m_score->load_font("C:\\Workspace\\GiaMat90\\pong\\Project1\\Font\\Carlito-Regular.ttf", 30u);
 	m_score->set_where(font::text_position(800, 50));

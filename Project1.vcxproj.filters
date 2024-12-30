@@ -19,12 +19,12 @@
     <Filter Include="sdl_engine">
       <UniqueIdentifier>{7d0c3de4-4080-4747-8a29-0e5d00c4758d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="pong">
+      <UniqueIdentifier>{2a35ea32-18f7-4c79-9d8e-a3e54a858120}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="pong.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sdl_engine\sdl_font.cpp">
@@ -45,11 +45,23 @@
     <ClCompile Include="engine\game.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="sdl_game.cpp">
+    <ClCompile Include="sdl_engine\sdl_game.cpp">
       <Filter>sdl_engine</Filter>
     </ClCompile>
-    <ClCompile Include="sdl_game_timer.cpp">
+    <ClCompile Include="sdl_engine\sdl_game_timer.cpp">
       <Filter>sdl_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="pong\ball.cpp">
+      <Filter>pong</Filter>
+    </ClCompile>
+    <ClCompile Include="pong\field.cpp">
+      <Filter>pong</Filter>
+    </ClCompile>
+    <ClCompile Include="pong\paddle.cpp">
+      <Filter>pong</Filter>
+    </ClCompile>
+    <ClCompile Include="pong\pong.cpp">
+      <Filter>pong</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,14 +113,32 @@
     <ClInclude Include="sdl_engine\sdl_window.h">
       <Filter>sdl_engine</Filter>
     </ClInclude>
-    <ClInclude Include="actor.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="game_timer.h">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="sdl_game_timer.h">
+    <ClInclude Include="pong\ball.h">
+      <Filter>pong</Filter>
+    </ClInclude>
+    <ClInclude Include="pong\field.h">
+      <Filter>pong</Filter>
+    </ClInclude>
+    <ClInclude Include="pong\paddle.h">
+      <Filter>pong</Filter>
+    </ClInclude>
+    <ClInclude Include="pong\pong.h">
+      <Filter>pong</Filter>
+    </ClInclude>
+    <ClInclude Include="sprite.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\game_object.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl_engine\sdl_game_timer.h">
       <Filter>sdl_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\asset.h">
+      <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

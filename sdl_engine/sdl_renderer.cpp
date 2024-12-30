@@ -5,7 +5,6 @@
 #include "sdl_font.h"
 #include "io/io.h"
 
-
 sdl_renderer::sdl_renderer(sdl_window * w) : renderer(w) {
 	//// Create SDL renderer
 	m_sdl_component = SDL_CreateRenderer(w->m_sdl_window, NULL);
@@ -37,8 +36,28 @@ void sdl_renderer::set_draw_color(const color& c)
 	}
 }
 
+void sdl_renderer::draw(sprite* s) {
+
+	// Load from file
+	SDL_Surface* surf = IMG_Load(s->get_file().c_str());
+}
+
+void sdl_renderer::draw(texture* t) {
+	auto tmp_texture = dynamic_cast<sdl_texture*>(t);
+	SDL_FRect dest{
+		.x = tmp_texture->get_where().get_x(),
+		.y = tmp_texture->get_where().get_y(),
+		.w = static_cast<float>(tmp_texture->get_sdl_component()->w),
+		.h = static_cast<float>(tmp_texture->get_sdl_component()->h)
+	};
+	SDL_RenderTexture(m_sdl_component, tmp_texture->get_sdl_component(), NULL, &dest);
+}
+
 void sdl_renderer::draw(font* f) {
 	auto tmp_font = dynamic_cast<sdl_font*>(f);
+	if (nullptr == tmp_font) {
+		throw(exception("Error converting font in sdl_font"));
+	}
 	SDL_Surface* tmp_surface = TTF_RenderText_Solid(
 		tmp_font->get_sdl_component(), 
 		tmp_font->get_text().c_str(), 

@@ -11,6 +11,7 @@
 #include "io/io.h"
 
 #include <SDL_ttf.h>
+#include <SDL3_image/SDL_image.h>
 
 bool game::initialize_externals() {
 	// Initialize SDL

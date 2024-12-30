@@ -39,7 +39,7 @@ void sdl_renderer::set_draw_color(const color& c)
 void sdl_renderer::draw(sprite* s) {
 
 	// Load from file
-	SDL_Surface* surf = IMG_Load(s->get_file().c_str());
+	//SDL_Surface* surf = IMG_Load(s->get_file().c_str());
 }
 
 void sdl_renderer::draw(texture* t) {

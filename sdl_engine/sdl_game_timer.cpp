@@ -2,9 +2,9 @@
 #include <SDL_timer.h>
 
 const float sdl_game_timer::tick() {
-	static unsigned m_ticks_elapsed = static_cast<unsigned>(SDL_GetTicks()); // ms since the library started
-	const unsigned tick_msec{ 1000u / m_fps }; // minimum time unit in ms
-	while ((m_ticks_elapsed + tick_msec - SDL_GetTicks()) > 0u) {}
+	static int m_ticks_elapsed = static_cast<int>(SDL_GetTicks()); // ms since the library started
+	const int tick_msec{ 1000 / static_cast<int>(m_fps) }; // minimum time unit in ms
+	while ((m_ticks_elapsed + tick_msec - static_cast<int>(SDL_GetTicks())) > 0) {}
 	// time elapsed
 	float delta_time = (SDL_GetTicks() - m_ticks_elapsed) / 1000.0f;
 	// store time for next tick

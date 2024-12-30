@@ -128,9 +128,6 @@
     <ClInclude Include="pong\pong.h">
       <Filter>pong</Filter>
     </ClInclude>
-    <ClInclude Include="sprite.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="engine\game_object.h">
       <Filter>engine</Filter>
     </ClInclude>
@@ -138,6 +135,9 @@
       <Filter>sdl_engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\asset.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\sprite.h">
       <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>

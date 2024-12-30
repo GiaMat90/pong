@@ -106,13 +106,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;USE_SDL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Workspace\GiaMat90\pong\Project1\pong;C:\Workspace\GiaMat90\pong\Project1\sdl_engine;C:\Workspace\GiaMat90\pong\Project1\engine;C:\Workspace\SDL_ttf\include\SDL3_image;C:\Workspace\SDL_ttf\include\SDL3_ttf;C:\Workspace\SDL\include\SDL3;C:\Workspace\SDL\include;C:\tsg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Workspace\GiaMat90\pong\Project1\pong;C:\Workspace\GiaMat90\pong\Project1\sdl_engine;C:\Workspace\GiaMat90\pong\Project1\engine;C:\Workspace\SDL_ttf\include\SDL3_ttf;C:\Workspace\SDL_image\include;C:\Workspace\SDL\include\SDL3;C:\Workspace\SDL\include;C:\tsg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Workspace\SDL\cmakebuild\Debug;C:\Workspace\SDL_ttf\cmakebuild\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL3.lib;SDL_uclibc.lib;SDL3_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Workspace\SDL_image\cmakebuild\Debug;C:\Workspace\SDL\cmakebuild\Debug;C:\Workspace\SDL_ttf\cmakebuild\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL3.lib;SDL_uclibc.lib;SDL3_ttf.lib;SDL3_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,6 +156,7 @@
     <ClInclude Include="engine\input.h" />
     <ClInclude Include="engine\keyboard_input.h" />
     <ClInclude Include="engine\renderer.h" />
+    <ClInclude Include="engine\sprite.h" />
     <ClInclude Include="engine\texture.h" />
     <ClInclude Include="engine\window.h" />
     <ClInclude Include="game_timer.h" />
@@ -171,7 +172,6 @@
     <ClInclude Include="sdl_engine\sdl_renderer.h" />
     <ClInclude Include="sdl_engine\sdl_texture.h" />
     <ClInclude Include="sdl_engine\sdl_window.h" />
-    <ClInclude Include="sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -177,6 +177,8 @@ void pong::generate_output() {
 	// Clear back buffer
 	m_renderer->clear();
 
+	m_field.draw();
+
 	// Draw walls
 	m_renderer->set_draw_color(color(255u, 255u, 255u, 255u));
 
